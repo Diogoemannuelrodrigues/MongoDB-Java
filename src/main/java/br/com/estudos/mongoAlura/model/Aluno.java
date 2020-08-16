@@ -14,12 +14,14 @@ public class Aluno implements Serializable {
 	private String codigo;
 	private String nome;
 	private String cpf;
+	private String apelido;
 
-	public Aluno(String codigo, String nome, String cpf) {
+	public Aluno(String codigo, String nome, String cpf, String apelido) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cpf = cpf;
+		this.apelido = apelido;
 	}
 
 	public Aluno() {
@@ -48,6 +50,14 @@ public class Aluno implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
 	}
 
 	@Override
