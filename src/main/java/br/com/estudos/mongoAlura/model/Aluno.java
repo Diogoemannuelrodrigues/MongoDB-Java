@@ -15,13 +15,15 @@ public class Aluno implements Serializable {
 	private String nome;
 	private String cpf;
 	private String apelido;
+	private String descricao;
 
-	public Aluno(String codigo, String nome, String cpf, String apelido) {
+	public Aluno(String codigo, String nome, String cpf, String apelido, String descricao) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.apelido = apelido;
+		this.descricao = descricao;
 	}
 
 	public Aluno() {
@@ -58,6 +60,14 @@ public class Aluno implements Serializable {
 
 	public void setApelido(String apelido) {
 		this.apelido = apelido;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<meta charset="UTF-8" />
+<title>Lista de Alunos</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body class="grey lighten-3">
+	<div id="listaDeAlunos">
+		<h3 class="main-title center">Lista de Alunos</h3>
+		<div class="form-control" align="center">
+			 <img src="loading.gif" alt="Olá Mundo" width="350px"
+				onerror="this.src='https://escolaweb.com.br/wp-content/uploads/2018/05/escolaweb-capas-artigos-2-retencao-de-alunos-o-que-e-e-como-fazer-1-1024x642.jpg';">
+		</div>
+		<!-- 		<img src="../2.png" alt="Alunos" title="Imagem aqui" width="500" height="600"> -->
+		<!-- 				<hr style="width:80%;text-align:left;margin-left:20"> -->
+
+					                <hr class="separator" hidden="true">
+		<div class="container">
+			<table class="striped responsive-table">
+				<thead>
+					<tr>
+						<th style="text-align: center;">ID</th>
+						<th style="text-align: center;">NOME</th>
+						<th style="text-align: center;">CPF</th>
+						<th style="text-align: center;">APELIDO</th>
+						<th style="text-align: center;">DESCRICAO</th>
+						<th style="text-align: center;">AÇÕES</th>
+					</tr>
+				</thead>
+				<tr th:each="aluno : ${alunos}">
+					<td style="text-align: center;"><span
+						th:text="${aluno.codigo}"></span></td>
+					<td style="text-align: center;"><span th:text="${aluno.nome}"></span></td>
+					<td style="text-align: center;"><span th:text="${aluno.cpf}"></span></td>
+					<td style="text-align: center;"><span
+						th:text="${aluno.apelido}"></span></td>
+					<td style="text-align: center;"><span
+						th:text="${aluno.descricao}"></span></td>
+					<td style="text-align: center;"><a
+						th:href="@{'/aluno/visualizar/' + ${aluno.codigo}}"
+						title="Visualizar"> <i class="tiny material-icons ">perm_identity</i>
+					</a> <a th:href="@{'/aluno/deletar/' + ${aluno.codigo}}"
+						title="Deletar Aluno"> <i class="tiny material-icons ">delete
+						</i>
+					</a></td>
+
+				</tr>
+
+			</table>
+			<!-- 			<div> -->
+			<!-- 				     <a th:href="@{/}">voltar para paginia inicial</a> -->
+			<!-- 			</div> -->
+			<div class="row">
+				<div class="input-field col s12 center">
+					<button onclick="history.back();"
+						class="btn waves-effect waves-light" type="submit" name="action">Voltar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Fim DIV listar alunos -->
+	<script type="text/javascript"
+		src="../materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

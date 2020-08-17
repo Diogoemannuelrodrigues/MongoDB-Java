@@ -28,8 +28,11 @@ public class AlunoService {
 		return aluno2;
 	}
 	
-	public void deletarAluno(String codigo) {
-		alunoRepo.deleteById(codigo);
+	public String deletarAluno(String codigo) {
+		Aluno user = alunoRepo.findById(codigo)
+			      .orElseThrow(() -> new IllegalArgumentException("Invalid user Código:" + codigo));
+			alunoRepo.deleteById(codigo);
+		return "" +user;
 	}
 
 }

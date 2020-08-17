@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link type="text/css" rel="stylesheet"
+	href="../materialize/css/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<title>EscolAlura</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../js/inicializar.js"></script>
+
+<script type="text/javascript" src="../js/googlemaps.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+</head>
+<body class="grey lighten-3">
+	<div id="formularioEdicao" class="container">
+		<h3 class="main-title center">Cadastrado com sucesso</h3>
+		<div class="form-control" align="center">
+            <img src="loading.gif" alt="Olá Mundo" 
+            onerror="this.src='https://mdback.mstatic.com.br/ckeditor/contato%40treinamed.com.br/2020/04/23/cad-success-preto.jpg';" >
+            
+            
+        </div>	
+	</div>
+	<!-- Volta para a pagina inicial -->
+	
+	<a th:href="@{/}">voltar para paginia inicial</a>
+
+	<script type="text/javascript"
+		src="../materialize/js/materialize.min.js"></script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIPw0BOFbsavl2S0XJm366GqIL8WaL4xw&amp;libraries=places&amp;callback=autoComplete"></script>
+
+</body>
+</html>
