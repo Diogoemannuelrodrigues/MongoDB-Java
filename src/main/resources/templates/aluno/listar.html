@@ -14,14 +14,20 @@
 	<div id="listaDeAlunos">
 		<h3 class="main-title center">Lista de Alunos</h3>
 		<div class="form-control" align="center">
-			 <img src="loading.gif" alt="Olá Mundo" width="350px"
+			<img src="loading.gif" alt="Olá Mundo" width="350px"
 				onerror="this.src='https://escolaweb.com.br/wp-content/uploads/2018/05/escolaweb-capas-artigos-2-retencao-de-alunos-o-que-e-e-como-fazer-1-1024x642.jpg';">
 		</div>
 		<!-- 		<img src="../2.png" alt="Alunos" title="Imagem aqui" width="500" height="600"> -->
 		<!-- 				<hr style="width:80%;text-align:left;margin-left:20"> -->
 
-					                <hr class="separator" hidden="true">
-		<div class="container">
+		<hr class="separator" hidden="true">
+<div class="container">
+		<td><a th:href="@{'/aluno/cadastrar'}" title="Cadastrar"
+			class="btn-floating btn-large waves-effect waves-light blue"><i
+				class="material-icons">add</i></a></td>
+		
+
+
 			<table class="striped responsive-table">
 				<thead>
 					<tr>
@@ -42,16 +48,18 @@
 						th:text="${aluno.apelido}"></span></td>
 					<td style="text-align: center;"><span
 						th:text="${aluno.descricao}"></span></td>
+					<td style="text-align: center;"><span
+						th:text="${aluno.descricao}"></span></td>
 					<td style="text-align: center;"><a
-						th:href="@{'/aluno/visualizar/' + ${aluno.codigo}}"
-						title="Visualizar"> <i class="tiny material-icons ">perm_identity</i>
-					</a> <a th:href="@{'/aluno/deletar/' + ${aluno.codigo}}"
-						title="Deletar Aluno"> <i class="tiny material-icons ">delete
-						</i>
-					</a></td>
+						th:href="@{'/aluno/visualizar/' + ${aluno.codigo}}" th:s
+						title="Visualizar"> <i class="tiny material-icons ">visibility</i></a>
+						<a th:href="@{'/aluno/deletar/' + ${aluno.codigo}}"
+						title="Deletar Aluno"> <i class="tiny material-icons ">delete</i></a>
+						<a th:href="@{'/aluno/editar/' + ${aluno.codigo}}"
+						title="Editar Aluno"> <i class="tiny material-icons ">edit</i></a>
+					</td>
 
 				</tr>
-
 			</table>
 			<!-- 			<div> -->
 			<!-- 				     <a th:href="@{/}">voltar para paginia inicial</a> -->

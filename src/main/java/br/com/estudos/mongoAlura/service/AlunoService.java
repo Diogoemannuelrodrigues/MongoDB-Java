@@ -27,12 +27,17 @@ public class AlunoService {
 		Optional<Aluno> aluno2 = alunoRepo.findById(id);
 		return aluno2;
 	}
-	
-	public String deletarAluno(String codigo) {
-		Aluno user = alunoRepo.findById(codigo)
-			      .orElseThrow(() -> new IllegalArgumentException("Invalid user Código:" + codigo));
-			alunoRepo.deleteById(codigo);
-		return "" +user;
+
+	public String deletarAluno(Aluno aluno) {
+		Aluno user = alunoRepo.findById(aluno.getCodigo())
+				.orElseThrow(() -> new IllegalArgumentException("Invalid user Código:" + aluno.getCodigo()));
+		alunoRepo.deleteById(aluno.getCodigo());
+		return "Aluno(a) exckuido: -> " + user;
+	}
+
+	public Aluno alterarUsuario(Aluno aluno) {
+		Optional<Aluno> alunoAlt = alunoRepo.findById(aluno.getCodigo());
+		return alunoRepo.save(aluno);
 	}
 
 }

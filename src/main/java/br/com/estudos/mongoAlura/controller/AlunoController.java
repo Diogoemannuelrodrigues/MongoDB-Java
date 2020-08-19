@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import br.com.estudos.mongoAlura.model.Aluno;
 import br.com.estudos.mongoAlura.service.AlunoService;
@@ -43,14 +44,8 @@ public class AlunoController {
 	public String salvar(@ModelAttribute Aluno aluno) {
 		alunoService.salvarAluno(aluno);
 		System.out.println("Aluno(a): " + aluno.getNome() + " salvo(a).");
-//		return "redirect:/";
-		if(alunoService.obterAlunoPor(aluno.getCodigo()).isPresent()) {
-			return "aluno/cadastradosucesso";
+		return "redirect:/aluno/listar";
 		}
-		else {
-			return "aluno/error";
-		}
-	}
 
 	@GetMapping("/aluno/visualizar/{codigo}")
 	public String visualizar(@PathVariable String codigo, Model model) {
@@ -59,22 +54,19 @@ public class AlunoController {
 		return "aluno/visualizar";
 	}
 
-//	@RequestMapping(value = "/aluno/deletar/{codigo}", method = RequestMethod.GET)
-//	public String deletar(String codigo) {
-//		if(codigo == null) {
-//			throw new IllegalArgumentException("Nao encontrado");
-//		} else {
-//			Optional<Aluno> alunoFInd = alunoService.obterAlunoPor(codigo);
-//		}
-//		alunoService.deletarAluno(codigo);
-////		System.out.println("Excluído o Aluno(a) "+ aluno.getNome() + " e codigo: "+ aluno.getCodigo());
-//		return "aluno/deletar";
-//	}
+	@GetMapping("/aluno/editar/{codigo}")
+	public String alterar(@ModelAttribute Aluno aluno, Model model) {
+		Optional<Aluno> alunoParaAlterar = alunoService.obterAlunoPor(aluno.getCodigo());
+//		Aluno alunoAlt = alunoService.alterarUsuario(aluno);
+		model.addAttribute("aluno", alunoParaAlterar /*alunoAlt*/);
+		return "/aluno/editar";
+	}
 
 	@GetMapping("/aluno/deletar/{codigo}")
-	public String deleteUser(@PathVariable("codigo") String codigo) {
-	    alunoService.deletarAluno(codigo);
-	    return "aluno/deletar";
+	public String deletar(@PathVariable("codigo") Aluno aluno) {
+		Optional<Aluno> obterAlunoPor = alunoService.obterAlunoPor(aluno.getCodigo());
+		alunoService.deletarAluno(aluno);
+	    return "redirect:/aluno/listar";
 	}
 	
 	
